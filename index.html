@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Js</title>
+</head>
+<body>
+    <script>
+        function collectInfo() {
+            let isCorr = false;
+            while (!isCorr) {
+                let Name = prompt("Введите ваше ФИО:");
+                let gender = prompt("Введите ваш пол (муж/жен):");
+                let age = prompt("Введите ваш возраст:");
+                let email = prompt("Введите ваш email:");
+                let Info = `ФИО: ${Name}\nПол: ${gender}\nВозраст: ${age}\nEmail: ${email}\n`;
+                isCorr = confirm(`Проверьте данные:\n${Info}\nВсе верно?`);
+                if (isCorr) {
+                    alert("Спасибо за информацию");
+                } else {
+                    alert("Ведите данные снова.");
+                }
+            }
+        }
+        function checkTicket() {
+            let ticket = prompt("Введите номер билета (6 цифр):");
+            if (ticket.length !== 6 || isNaN(ticket)) {
+                alert("Нужно ввести не больше и неменьше 6 цифр.");
+                return;
+            }
+            let dig = ticket.split('').map(Number);
+            let sumFirHalf = dig[0] + dig[1] + dig[2];
+            let sumSecHalf = dig[3] + dig[4] + dig[5];
+            if (sumFirHalf === sumSecHalf) {
+                alert("Ваш билет счастливый!");
+            } else {
+                alert("Ваш билет не счастливый.");
+            }
+        }
+    </script>
+    <h1>Сбор информации</h1>
+    <button onclick="collectInfo()">Начать</button>
+    <h1>Проверка счастливого билета</h1>
+    <button onclick="checkTicket()">Проверить билет</button>
+</body>
+</html>
